@@ -1,0 +1,19 @@
+####### Create Episode
+POST http://localhost:3000/episodes HTTP/1.1
+Content-Type: application/json
+auth: your_api_key
+
+{
+    "name": "Episode 2",
+    "featured": true,
+    "createdAt": "2024-04-16"
+}
+
+### Get All Episodes
+GET http://localhost:3000/episodes HTTP/1.1
+
+### Get Featured Episodes
+GET http://localhost:3000/episodes/featured HTTP/1.1
+
+### Get by ID
+GET http://localhost:3000/episodes/acd77627-187b-4b41-9b08-652934c6afe0 HTTP/1.1
