@@ -1,0 +1,18 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.tree.indent": 18,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhO2Rsc2ZraiIsInVzZXJuYW1lIjoiYW5lZXMiLCJpYXQiOjE3MzI1NDkxNDYsImV4cCI6MTc2NDA4NTE0Nn0.7rJC4K4lHa4jHNdMtGLMB-kS48wYXUuPPKYDR0AWgX4"
+    },
+    "local": {
+      "host": "http://0.0.0.0:3000/",
+      "token": "{{$shared token}}"
+    }
+  }
+}

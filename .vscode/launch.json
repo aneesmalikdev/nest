@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Dev",
+            "request": "launch",
+            "runtimeArgs": ["run", "dev"],
+            "runtimeExecutable": "npm",
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
+        },
+        {
+            "name": "Launch Local",
+            "request": "launch",
+            "runtimeArgs": ["run", "start:test"],
+            "runtimeExecutable": "npm",
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
+        },
+        {
+            "name": "Launch Runner",
+            "request": "launch",
+            "runtimeArgs": ["run", "runner"],
+            "runtimeExecutable": "npm",
+            "skipFiles": ["<node_internals>/**"],
+            "type": "node"
+        }
+    ]
+}

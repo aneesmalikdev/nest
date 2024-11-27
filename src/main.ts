@@ -1,19 +1,24 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common'
+import { HttpAdapterHost, NestFactory } from '@nestjs/core'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { AppModule } from './app.module'
+import { PrismaClientExceptionFilter } from './prisma-client-exception/prisma-client-exception.filter'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-
+  const app = await NestFactory.create(AppModule)
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }))
   const config = new DocumentBuilder()
-    .setTitle('Pordcast API')
-    .setDescription(
-      'This is a backend of Pordcase Episides Backend build with Nest js',
-    )
-    .setVersion('1.0.0')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-  await app.listen(process.env.PORT ?? 3000);
+    .setTitle('Median')
+    .setDescription('The Median API description')
+    .setVersion('0.1')
+    .build()
+
+  const document = SwaggerModule.createDocument(app, config)
+  SwaggerModule.setup('api', app, document)
+
+  const { httpAdapter } = app.get(HttpAdapterHost)
+  app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter))
+
+  await app.listen(process.env.PORT ?? 3000)
 }
-bootstrap();
+bootstrap()
